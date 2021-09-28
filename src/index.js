@@ -29,8 +29,7 @@ const listToArray = (str) => {
     const assignees = Core.getInput('assignees');
 
     const octokit = Github.getOctokit(token);
-    // https://docs.github.com/en/rest/reference/issues#create-an-issue
-    console.log('new issues obj', {
+    const opts = Object.fromEntries(Object.entries({
       owner,
       repo,
       title,
@@ -38,17 +37,12 @@ const listToArray = (str) => {
       milestone: milestone == '' ? null : milestone,
       labels: labels ? listToArray(labels) : null,
       assignees: assignees ? listToArray(assignees) : null
-    });
+    }).filter(([_, v]) => v != null));
 
-    const newIssue = await octokit.rest.issues.create({
-      owner,
-      repo,
-      title,
-      body: body == '' ? null : body,
-      milestone: milestone == '' ? null : milestone,
-      labels: labels ? listToArray(labels) : null,
-      assignees: assignees ? listToArray(assignees) : null
-    });
+    console.log('New issue options:', opts);
+    // https://docs.github.com/en/rest/reference/issues#create-an-issue
+    const newIssue = await octokit.rest.issues.create(opts);
+    console.log(newIssue);
   } catch (err) {
 
     Core.setFailed(err.message);
