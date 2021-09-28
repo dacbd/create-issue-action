@@ -35,8 +35,8 @@ const listToArray = (str) => {
             title,
             body,
             milestone,
-            labels ? listToArray(labels) : null,
-            assignees ? listToArray(assignees) : null
+            labesl: labels ? listToArray(labels) : null,
+            assignees: assignees ? listToArray(assignees) : null
         });
     } catch (err) {
         

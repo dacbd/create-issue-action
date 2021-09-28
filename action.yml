@@ -1,10 +1,9 @@
----
 name: Create Github Issue
 description: Creates a new github issue as directly as possible
 author: Daniel Barnes
 runs:
   using: node12
-  main: src/index.js
+  main: dist/index.js
 inputs:
   token:
     description: PAT or actions token
