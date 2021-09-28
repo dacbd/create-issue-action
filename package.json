@@ -4,7 +4,8 @@
   "description": "Another create a issue on Github actions that strives to be as simple as possible...",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build src/index.js --license LICENSE"
   },
   "repository": {
     "type": "git",

@@ -12,12 +12,11 @@ const listToArray = (str) => {
 
     try {
         
-        // default values handled by action.yml
         const rtrue = { required: true };
         const token = Core.getInput('token', rtrue);
-        const owner = Core.getInput('owner', rtrue);
 
         // required but defaults not handled by action.yml
+        const owner = Core.getInput('owner') || Github.context.repository_owner;
         const repo = (Core.getInput('repo',  { required: false }) || Github.context.repo);
         const title = Core.getInput('title', rtrue);
 
@@ -35,8 +34,8 @@ const listToArray = (str) => {
             title,
             body,
             milestone,
-            labels ? listToArray(labels) : null,
-            assignees ? listToArray(assignees) : null
+            labesl: labels ? listToArray(labels) : null,
+            assignees: assignees ? listToArray(assignees) : null
         });
     } catch (err) {
         
