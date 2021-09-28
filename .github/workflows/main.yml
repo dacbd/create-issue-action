@@ -1,3 +1,4 @@
+name: Basic test on PR
 on:
   pull_request:
     branches: main
@@ -8,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: test new issue
-        uses: ./
+        uses: DanielBarnes/create-issue-action@${{ github.sha }}
         with:
           token: ${{ github.token }}
           title: Simple test issue

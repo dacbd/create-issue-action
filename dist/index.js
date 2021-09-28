@@ -6361,6 +6361,16 @@ const listToArray = (str) => {
 
     const octokit = Github.getOctokit(token);
     // https://docs.github.com/en/rest/reference/issues#create-an-issue
+    console.log('new issues obj', {
+      owner,
+      repo,
+      title,
+      body,
+      milestone,
+      labesl: labels ? listToArray(labels) : null,
+      assignees: assignees ? listToArray(assignees) : null
+    });
+
     const newIssue = await octokit.rest.issues.create({
       owner,
       repo,
