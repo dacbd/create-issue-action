@@ -17,8 +17,9 @@ const listToArray = (str) => {
     const token = Core.getInput('token', rtrue);
 
     // required but defaults not handled by action.yml
-    const owner = Core.getInput('owner') || Github.context.repository_owner;
-    const repo = (Core.getInput('repo',  { required: false }) || Github.context.repo);
+    const repoContext = Github.context.repo;
+    const owner = Core.getInput('owner') || repoContext.owner;
+    const repo = Core.getInput('repo') || repoContext.repo;
     const title = Core.getInput('title', rtrue);
 
     // optional
@@ -35,7 +36,7 @@ const listToArray = (str) => {
       title,
       body,
       milestone,
-      labesl: labels ? listToArray(labels) : null,
+      labels: labels ? listToArray(labels) : null,
       assignees: assignees ? listToArray(assignees) : null
     });
 
