@@ -2,8 +2,9 @@
 name: Create Github Issue
 description: Creates a new github issue as directly as possible
 author: Daniel Barnes
-icon: alert-octagon
-color: gray-dark
+branding:
+  icon: alert-octagon
+  color: gray-dark
 runs:
   using: node12
   main: ./dist/index.js
