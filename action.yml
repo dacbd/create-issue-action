@@ -4,7 +4,7 @@ description: Creates a new github issue as directly as possible
 author: Daniel Barnes
 runs:
   using: node12
-  main: dist/index.js
+  main: ./dist/index.js
 inputs:
   token:
     description: Your Github PAT, defaults to actions token
