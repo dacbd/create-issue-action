@@ -1,3 +1,4 @@
+---
 name: Create Github Issue
 description: Creates a new github issue as directly as possible
 author: Daniel Barnes
@@ -20,8 +21,8 @@ inputs:
   body:
     description: Body content of issue
     required: false
-  milestone: Milestone associated with issue
-    description: thing
+  milestone: 
+    description: Milestone associated with issue
     required: false
   labels:
     description: CSV of labels (e.x. 'p0-critial,bug,aws')

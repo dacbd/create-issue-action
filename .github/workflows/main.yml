@@ -1,7 +1,6 @@
 on:
   pull_request:
-    branches:
-      - main
+    branches: main
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,7 +10,7 @@ jobs:
       - name: test new issue
         uses: ./
         with:
-          token: {{ github.token }}
+          token: ${{ github.token }}
           title: Simple test issue
           body: |
             This is a test that includes
