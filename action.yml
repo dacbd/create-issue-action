@@ -1,0 +1,32 @@
+---
+name: Create Github Issue
+description: Creates a new github issue as directly as possible
+author: Daniel Barnes
+runs:
+  using: node12
+  main: src/index.js
+inputs:
+  token:
+    description: PAT or actions token
+    required: true
+  owner:
+    description: Owner
+    required: true
+  repo:
+    description: Repo or impiled by the current context
+    required: false
+  title:
+    description: Issue title
+    required: true
+  body:
+    description: Body content of issue
+    required: false
+  milestone: Milestone associated with issue
+    description: thing
+    required: false
+  labels:
+    description: CSV of labels (e.x. 'p0-critial,bug,aws')
+    required: false
+  assignees:
+    description: CSV of github usernames to assign (e.x. 'DanielBarnes,nlf')
+    required: false

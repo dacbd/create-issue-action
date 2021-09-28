@@ -28,6 +28,7 @@ const listToArray = (str) => {
         const assignees = Core.getInput('assignees');
 
         const octokit = Github.getOctokit(token);
+        // https://docs.github.com/en/rest/reference/issues#create-an-issue
         const newIssue = await octokit.rest.issues.create({
             owner,
             repo,
