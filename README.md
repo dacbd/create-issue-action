@@ -1,6 +1,8 @@
 # create-issue-action
 Another create an issue on Github actions that strives to be as simple as possible...
 
+Basically a converter that takes your yaml entry and connects it to the rest endpoint to create an issue on github.
+
 ## Config
 options for `with:`
 | Option  | Default Value  | Notes  |
