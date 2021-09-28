@@ -6366,8 +6366,8 @@ const listToArray = (str) => {
       owner,
       repo,
       title,
-      body,
-      milestone,
+      body: body == '' ? null : body,
+      milestone: milestone == '' ? null : milestone,
       labels: labels ? listToArray(labels) : null,
       assignees: assignees ? listToArray(assignees) : null
     });
@@ -6376,9 +6376,9 @@ const listToArray = (str) => {
       owner,
       repo,
       title,
-      body,
-      milestone,
-      labesl: labels ? listToArray(labels) : null,
+      body: body == '' ? null : body,
+      milestone: milestone == '' ? null : milestone,
+      labels: labels ? listToArray(labels) : null,
       assignees: assignees ? listToArray(assignees) : null
     });
   } catch (err) {
