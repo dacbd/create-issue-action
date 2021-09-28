@@ -1,0 +1,19 @@
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test action on PR
+    steps:
+      - uses: actions/checkout@v2
+      - name: test new issue
+        uses: ./
+        with:
+          token: {{ github.token }}
+          title: Simple test issue
+          body: |
+            This is a test that includes
+            a multiline string.
+          assignees: DanielBarnes
