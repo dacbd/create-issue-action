@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: test new issue
-        uses: DanielBarnes/create-issue-action@${{ github.sha }}
+        uses: ./dist
         with:
           token: ${{ github.token }}
           title: Simple test issue
