@@ -6371,11 +6371,9 @@ const listToArray = (str) => {
       assignees: assignees ? listToArray(assignees) : null
     }).filter(([_, v]) => v != null));
 
-    console.log('Github Context:', Github.context);
-    console.log('New issue options:', opts);
     // https://docs.github.com/en/rest/reference/issues#create-an-issue
     const newIssue = await octokit.rest.issues.create(opts);
-    console.log(newIssue);
+    console.log('Created:', newIssue.data.html_url);
   } catch (err) {
 
     Core.setFailed(err.message);
