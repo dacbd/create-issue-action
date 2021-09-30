@@ -17,7 +17,7 @@ options for `with:`
 | assignees  |                            | A comma seperated list of Github usernames to assign the issue to  |
 
 ## Usage
-Limited test has currnet been done, only tested on `ubuntu-latest`
+Limited testing has been done, and only on `ubuntu-latest`
 
 Basic Usage:
 ```yml
