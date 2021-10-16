@@ -1,7 +1,7 @@
 # create-issue-action
-Another create an issue on Github actions that strives to be as simple as possible...
+Another create an issue on GitHub action that strives to be as simple as possible...
 
-Basically a converter that takes your yaml entry and connects it to the rest endpoint to create an issue on github.
+Basically a converter that takes your yaml entry and connects it to the rest endpoint to create an issue on GitHub.
 
 ## Config
 options for `with:`
@@ -14,7 +14,7 @@ options for `with:`
 | body       |                            |   |
 | milestone  |                            |   |
 | labels     |                            | A comma seperated list of labels  |
-| assignees  |                            | A comma seperated list of Github usernames to assign the issue to  |
+| assignees  |                            | A comma seperated list of GitHub usernames to assign the issue to  |
 
 ## Usage
 Limited testing has been done, and only on `ubuntu-latest`
