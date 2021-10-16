@@ -24,7 +24,7 @@ Basic Usage:
 steps:
   - uses: actions/checkout@v2
   - name: create an issue
-    uses: DanielBarnes/create-issue-action@main
+    uses: dacbd/create-issue-action@main
     with:
       token: ${{ github.token }}
       title: Simple test issue
@@ -39,7 +39,7 @@ steps:
     run: exit 1
   - name: Create Issue on Failed workflow
     if: ${{ failure() }}
-    uses: DanielBarnes/create-issue-action@main
+    uses: dacbd/create-issue-action@main
     with:
       token: ${{ github.token }}
       title: Action workflow failed.

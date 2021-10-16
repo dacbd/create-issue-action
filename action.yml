@@ -31,5 +31,5 @@ inputs:
     description: CSV of labels (e.x. 'p0-critial,bug,aws')
     required: false
   assignees:
-    description: CSV of github usernames to assign (e.x. 'DanielBarnes,nlf')
+    description: CSV of github usernames to assign (e.x. 'dacbd,nlf')
     required: false
