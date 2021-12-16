@@ -16,4 +16,4 @@ jobs:
           body: |
             This is a test that includes a multiline string.
             Created by https://github.com/DanielBarnes/create-issue-action/actions/runs/${{ github.run_id }}
-          assignees: DanielBarnes
+          assignees: dacbd
