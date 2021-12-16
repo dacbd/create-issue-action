@@ -12,7 +12,7 @@
     "url": "git+https://github.com/DanielBarnes/create-issue-action.git"
   },
   "author": "Daniel Barnes",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DanielBarnes/create-issue-action/issues"
   },
