@@ -37,7 +37,7 @@ jobs:
           body: |
             # Test
             multiline
-          labels: test
+          labels: test,bot
           assignees: dacbd
   push-test:
     if: github.event_name == 'push'
