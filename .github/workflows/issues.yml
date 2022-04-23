@@ -4,12 +4,14 @@ on:
     types:
       - labeled
       - opened
+concurrency:
+  group: ${{ github.event.issue.number }}
 jobs:
   delete-test-issues:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          is_test=$(echo "${{ toJSON(github.event) }}" | jq '.issue.labels[].name == "test"' | grep true)
+          is_test=$(echo '${{ toJSON(github.event) }}' | jq '.issue.labels[].name == "test"' | grep true)
           if [[ -z "$is_test" ]]; then
             curl --slient --show-error \
               --request PATCH \
