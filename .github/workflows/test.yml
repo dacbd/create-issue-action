@@ -32,7 +32,7 @@ jobs:
       - name: test
         uses: ./
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.PAT }}
           title: "PR test from: `${{ github.ref_name }}`"
           body: |
             # Test
