@@ -52,3 +52,7 @@ steps:
         status -        `${{ job.status }}`
       assignees: SomeUsername,AnotherUsername
 ```
+## Issues & debugging
+If you encounter issues with my action feel free to create an issue or a PR, happy to take improvements or requests.
+
+More verbose logging can be enabled via GitHub Actions feature: [`ACTIONS_STEP_DEBUG`](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging#enabling-step-debug-logging)
