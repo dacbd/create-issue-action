@@ -1,0 +1,20 @@
+name: Auto Issue closer
+on:
+  issues:
+    types:
+      - labeled
+      - opened
+jobs:
+  delete-test-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          is_test=$(echo "${{ toJSON(github.event) }}" | jq '.issue.labels[].name == "test"' | grep true)
+          if [[ -z "$is_test" ]]; then
+            curl --slient --show-error \
+              --request PATCH \
+              --header "Accept: application/vnd.github.v3+json" \
+              --header "Authorization: token ${{ secrets.PAT }}" \
+              --url "https://api.github.com/repos/dacbd/create-issue-action/issues/${{ github.event.issue.number }}" \
+              --data '{"state":"closed"}'
+          fi
