@@ -5,6 +5,31 @@ on:
     branches: main
   workflow_dispatch:
 jobs:
+  pr-test:
+    id: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v3
+      - name: test
+        uses: ./
+        with:
+          token: ${{ github.token }}
+          title: PR test from: `${{ github.ref_name }}`
+          body: |
+            # Test
+            multiline
+          labels: test
+          assignees: dacbd
+  push-test:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: |
+          echo "todo"
   trigger-test:
     runs-on: ubuntu-latest
     steps:
@@ -14,4 +39,4 @@ jobs:
             --header "Authorization: token ${{ secrets.PAT }}" \
             --header "Accept: application/vnd.github.v3+json" \
             --url "https://api.github.com/repos/dacbd/err/dispatches" \
-            --data '{"event_type":"basic", "client_payload": {"key":"value", "ref_name":"${{ github.ref_name }}"} }'
+            --data '{"event_type":"basic", "client_payload": {"ref_name":"${{ github.ref_name }}"}}'
