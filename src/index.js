@@ -31,7 +31,7 @@ const listToArray = (str) => {
     const milestone = Core.getInput('milestone');
     const labels = Core.getInput('labels');
     const assignees = Core.getInput('assignees');
-    Core.debug(`Using body: ${body}`);
+    Core.debug(`Using body: """${body}"""`);
     Core.debug(`Using milestone: ${milestone}`);
     Core.debug(`Using labels: ${labels}`);
     Core.debug(`Using assignees: ${assignees}`);
@@ -46,7 +46,7 @@ const listToArray = (str) => {
       labels: labels ? listToArray(labels) : null,
       assignees: assignees ? listToArray(assignees) : null
     }).filter(([_, v]) => v != null));
-    Core.debug(`Object for new issue: ${opts}`)
+    Core.debug(`Object for new issue: """${JSON.stringify(opts, null, 2)}"""`)
     // https://docs.github.com/en/rest/reference/issues#create-an-issue
     const newIssue = await octokit.rest.issues.create(opts);
     Core.info(`Created: ${newIssue.data.html_url}`)
