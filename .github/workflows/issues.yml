@@ -4,6 +4,8 @@ on:
     types:
       - labeled
       - opened
+concurrency:
+  group: ${{ github.event.issue.number }}
 jobs:
   delete-test-issues:
     runs-on: ubuntu-latest
