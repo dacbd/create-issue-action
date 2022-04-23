@@ -1,19 +1,60 @@
-name: Basic test on PR
+name: Basic Tests
 on:
+  push:
   pull_request:
     branches: main
+  workflow_dispatch:
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    name: Test action on PR
     steps:
-      - uses: actions/checkout@v2
-      - name: test new issue
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: |
+          echo "todo"
+          npm install
+          npm run build
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "good"
+          else
+            echo "Forgot to commit 'npm run build'?"
+            git status
+            exit 1
+          fi
+  pr-test:
+    if: github.event_name == 'pull_request'
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: test
         uses: ./
         with:
-          token: ${{ github.token }}
-          title: Simple test issue
+          token: ${{ secrets.PAT }}
+          title: "PR test from: `${{ github.ref_name }}`"
           body: |
-            This is a test that includes a multiline string.
-            Created by https://github.com/DanielBarnes/create-issue-action/actions/runs/${{ github.run_id }}
+            # Test
+            multiline
+          labels: test,bot
           assignees: dacbd
+  push-test:
+    if: github.event_name == 'push'
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          echo "todo"
+  trigger-test:
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl --silent --show-error \
+            --request POST \
+            --header "Authorization: token ${{ secrets.PAT }}" \
+            --header "Accept: application/vnd.github.v3+json" \
+            --url "https://api.github.com/repos/dacbd/err/dispatches" \
+            --data '{"event_type":"basic", "client_payload": {"ref_name":"${{ github.ref_name }}"}}'
