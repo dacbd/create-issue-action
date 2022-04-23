@@ -8594,11 +8594,6 @@ const listToArray = (str) => {
     Core.debug(`Using labels: ${labels}`);
     Core.debug(`Using assignees: ${assignees}`);
 
-  } catch (err) {
-    Core.error(err);
-    Core.setFailed('Unable to parsing inputs');
-  }
-  try {
     const octokit = Github.getOctokit(token);
     const opts = Object.fromEntries(Object.entries({
       owner,
@@ -8610,15 +8605,11 @@ const listToArray = (str) => {
       assignees: assignees ? listToArray(assignees) : null
     }).filter(([_, v]) => v != null));
     Core.debug(`Object for new issue: ${opts}`)
-  } catch (err) {
-    Core.error(err);
-    Core.setFailed('Unable to create object for new issue')
-  }
-  try {
     // https://docs.github.com/en/rest/reference/issues#create-an-issue
     const newIssue = await octokit.rest.issues.create(opts);
     Core.info(`Created: ${newIssue.data.html_url}`)
   } catch (err) {
+
     Core.error(err);
     Core.setFailed('Request to create new issue failed');
   }
