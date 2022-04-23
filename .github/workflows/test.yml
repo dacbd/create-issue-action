@@ -14,7 +14,7 @@ jobs:
         uses: ./
         with:
           token: ${{ github.token }}
-          title: PR test from: `${{ github.ref_name }}`
+          title: "PR test from: `${{ github.ref_name }}`"
           body: |
             # Test
             multiline
