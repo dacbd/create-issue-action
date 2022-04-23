@@ -5,8 +5,26 @@ on:
     branches: main
   workflow_dispatch:
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: |
+          echo "todo"
+          npm install
+          npm run build
+          git status
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "true"
+          else
+            echo "false"
+          fi
   pr-test:
     if: github.event_name == 'pull_request'
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: action/checkout@v3
@@ -22,12 +40,10 @@ jobs:
           assignees: dacbd
   push-test:
     if: github.event_name == 'push'
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
       - run: |
           echo "todo"
   trigger-test:
