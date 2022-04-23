@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   pr-test:
-    id: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: action/checkout@v3
