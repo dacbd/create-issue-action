@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanielBarnes/create-issue-action.git"
+    "url": "git+https://github.com/dacbd/create-issue-action.git"
   },
   "author": "Daniel Barnes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DanielBarnes/create-issue-action/issues"
+    "url": "https://github.com/dacbd/create-issue-action/issues"
   },
-  "homepage": "https://github.com/DanielBarnes/create-issue-action#readme",
+  "homepage": "https://github.com/dacbd/create-issue-action#readme",
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0"
