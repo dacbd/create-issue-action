@@ -20,7 +20,7 @@ options for `with:`
 | output | value |
 | ------ | ----- |
 | json | [See Response](https://docs.github.com/en/rest/issues/issues#create-an-issue) |
-| htmlURL | the issue's web url |
+| html_url | the issue's web url |
 | number | the issue's number |
 
 ## Usage

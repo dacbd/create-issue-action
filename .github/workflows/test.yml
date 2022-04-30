@@ -43,7 +43,7 @@ jobs:
       - name: View action outputs
         run: |
           echo "${{ steps.new-issue.outputs.number }}"
-          echo "${{ steps.new-issue.outputs.htmlURL }}"
+          echo "${{ steps.new-issue.outputs.html_url }}"
           echo "${{ steps.new-issue.outputs.json }}" | jq .
           echo "${{ steps.new-issue.outputs.json }}" | jq .state
           echo "${{ steps.new-issue.outputs.json }}" | jq .labels[].name

@@ -8610,7 +8610,7 @@ const listToArray = (str) => {
     Core.info(`Created: ${newIssue.data.html_url}`)
     Core.setOutput("json", JSON.stringify(newIssue.data));
     Core.setOutput("number", newIssue.data.number);
-    Core.setOutput("htmlURL", newIssue.data.html_url);
+    Core.setOutput("html_url", newIssue.data.html_url);
   } catch (err) {
 
     Core.error(err);
