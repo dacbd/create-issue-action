@@ -44,9 +44,9 @@ jobs:
         run: |
           echo "${{ steps.new-issue.outputs.number }}"
           echo "${{ steps.new-issue.outputs.html_url }}"
-          echo "${{ steps.new-issue.outputs.json }}" | jq 
-          echo "${{ steps.new-issue.outputs.json }}" | jq .state
-          echo "${{ steps.new-issue.outputs.json }}" | jq .labels[].name
+          echo '${{ steps.new-issue.outputs.json }}' | jq 
+          echo '${{ steps.new-issue.outputs.json }}' | jq .state
+          echo '${{ steps.new-issue.outputs.json }}' | jq .labels[].name
   push-test:
     if: github.event_name == 'push'
     needs: [build]
