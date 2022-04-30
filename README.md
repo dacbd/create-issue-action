@@ -73,7 +73,7 @@ steps:
       title: Simple test issue
       body: my new issue
   - run: |
-      echo "${{ steps.new-issue.outputs.json }}" | jq .
+      echo "${{ steps.new-issue.outputs.json }}" | jq
       echo "${{ steps.new-issue.outputs.json }}" | jq .state
       echo "${{ steps.new-issue.outputs.json }}" | jq .labels[].name
 ```
