@@ -30,6 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: test
+        id: new-issue
         uses: ./
         with:
           token: ${{ secrets.PAT }}
@@ -39,6 +40,13 @@ jobs:
             multiline
           labels: test,bot
           assignees: dacbd
+      - name: View action outputs
+        run: |
+          echo "${{ steps.new-issue.outputs.number }}"
+          echo "${{ steps.new-issue.outputs.htmlURL }}"
+          echo "${{ steps.new-issue.outputs.json }}" | jq .
+          echo "${{ steps.new-issue.outputs.json }}" | jq .state
+          echo "${{ steps.new-issue.outputs.json }}" | jq .labels[].name
   push-test:
     if: github.event_name == 'push'
     needs: [build]
