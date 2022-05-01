@@ -50,6 +50,9 @@ const listToArray = (str) => {
     // https://docs.github.com/en/rest/reference/issues#create-an-issue
     const newIssue = await octokit.rest.issues.create(opts);
     Core.info(`Created: ${newIssue.data.html_url}`)
+    Core.setOutput("json", JSON.stringify(newIssue.data));
+    Core.setOutput("number", newIssue.data.number);
+    Core.setOutput("html_url", newIssue.data.html_url);
   } catch (err) {
 
     Core.error(err);

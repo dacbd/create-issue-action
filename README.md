@@ -16,13 +16,20 @@ options for `with:`
 | labels     |                            | A comma seperated list of labels  |
 | assignees  |                            | A comma seperated list of GitHub usernames to assign the issue to  |
 
+## Outputs
+| output | value |
+| ------ | ----- |
+| json | [See Response](https://docs.github.com/en/rest/issues/issues#create-an-issue) |
+| html_url | the issue's web url |
+| number | the issue's number |
+
 ## Usage
 Limited testing has been done, and only on `ubuntu-latest`
 
 Basic Usage:
 ```yml
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
   - name: create an issue
     uses: dacbd/create-issue-action@main
     with:
@@ -34,7 +41,7 @@ steps:
 The reason for being usage:
 ```yml
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
   - name: Something that might fail
     run: exit 1
   - name: Create Issue on Failed workflow
@@ -52,6 +59,48 @@ steps:
         status -        `${{ job.status }}`
       assignees: SomeUsername,AnotherUsername
 ```
+
+## Other examples
+Using outputs:
+```yml
+...
+steps:
+  - uses: actions/checkout@v3
+  - uses: dacbd/create-issue-action@v1
+    id: new-issue
+    with:
+      token: ${{ github.token }}
+      title: Simple test issue
+      body: my new issue
+  - run: |
+      echo "${{ steps.new-issue.outputs.json }}" | jq
+      echo "${{ steps.new-issue.outputs.json }}" | jq .state
+      echo "${{ steps.new-issue.outputs.json }}" | jq .labels[].name
+```
+
+Transpose issues to a private repo:
+```yml
+name: transpose issue
+  issues:
+    types: [labeled]
+job:
+  transpose:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'backend')
+    steps:
+      - name: Copy Issue
+        uses: dacbd/create-issue-action@v1
+        with:
+          token: ${{ secrets.PAT }}
+          org: octo-org
+          repo: private-backend-service
+          title: ${{ github.event.issue.title }}
+          body: |
+            Closes: ${{ github.event.issue.html_url }}
+            # Body
+            ${{ github.event.issue.body }}
+```
+
 ## Issues & debugging
 If you encounter issues with my action feel free to create an issue or a PR, happy to take improvements or requests.
 
