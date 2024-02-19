@@ -27,9 +27,10 @@ options for `with:`
 Limited testing has been done, and only on `ubuntu-latest`
 
 Basic Usage:
+
 ```yml
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v4
   - name: create an issue
     uses: dacbd/create-issue-action@main
     with:
@@ -39,9 +40,10 @@ steps:
 ```
 
 The reason for being usage:
+
 ```yml
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v4
   - name: Something that might fail
     run: exit 1
   - name: Create Issue on Failed workflow
@@ -61,12 +63,14 @@ steps:
 ```
 
 ## Other examples
+
 Using outputs:
+
 ```yml
 ...
 steps:
-  - uses: actions/checkout@v3
-  - uses: dacbd/create-issue-action@v1
+  - uses: actions/checkout@v4
+  - uses: dacbd/create-issue-action@main
     id: new-issue
     with:
       token: ${{ github.token }}
@@ -79,6 +83,7 @@ steps:
 ```
 
 Transpose issues to a private repo:
+
 ```yml
 name: transpose issue
   issues:
@@ -89,7 +94,7 @@ job:
     if: contains(github.event.issue.labels.*.name, 'backend')
     steps:
       - name: Copy Issue
-        uses: dacbd/create-issue-action@v1
+        uses: dacbd/create-issue-action@main
         with:
           token: ${{ secrets.PAT }}
           org: octo-org

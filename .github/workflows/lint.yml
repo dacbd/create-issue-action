@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Lint Code Base
@@ -23,4 +23,3 @@ jobs:
           DEFAULT_BRANCH: main
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_NATURAL_LANGUAGE: false
-
