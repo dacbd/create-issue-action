@@ -4,7 +4,7 @@ The #1 simple and awesome create-issue action on GitHub. 🌟
 
 Basically a converter that takes your yaml entry and connects it to the rest endpoint to create an issue on GitHub.
 
-#### Quick Start (or [jump to advanced](https://github.com/dacbd/create-issue-action#generate-advance-report)):
+## Quick Start (or [jump to advanced](https://github.com/dacbd/create-issue-action#generate-advanced-report)):
 
 ```yml
 steps:
@@ -19,7 +19,7 @@ steps:
 
 ## Configure
 
-#### Inputs (through `with:`)
+### Inputs (through `with:`)
 
 | Option  | Default Value  | Notes  |
 | ------------ | ------------ | ------------ |
@@ -32,7 +32,7 @@ steps:
 | labels     |                            | A comma seperated list of labels  |
 | assignees  |                            | A comma seperated list of GitHub usernames to assign the issue to  |
 
-#### Outputs
+### Outputs
 
 | output | value |
 | ------ | ----- |
@@ -46,7 +46,7 @@ steps:
 > Limited testing has been done, and only on `ubuntu-latest`.
 > We welcome tester volunteers!
 
-### Generate Advanced Report:
+### Generate Advanced Report
 
 ```yml
 name: Your Awesome Workflow
@@ -93,7 +93,7 @@ jobs:
             > **DO NOT** close this issue until resolved.
 ```
 
-### Using outputs:
+### Using outputs
 
 ```yml
 ...
@@ -153,3 +153,4 @@ Made with [contrib.rocks](https://contrib.rocks).
 
 ## Community Activities
 
+Proposed to auto-generate repo activity report via https://repobeats.axiom.co/
